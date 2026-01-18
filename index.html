@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Outcome AI — Decision Intelligence</title>
+  <title>Outcome AI — VIN-First Dashboard</title>
   <style>
     :root{
       --bg:#1a2230; --bg2:#141b27;
@@ -25,7 +25,7 @@
     .top{position:sticky; top:0; z-index:10; backdrop-filter: blur(12px);
       background: linear-gradient(180deg, rgba(20,25,34,.78), rgba(20,25,34,.55));
       border-bottom:1px solid rgba(255,255,255,.08);}
-    .top .inner{max-width:1120px;margin:0 auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+    .top .inner{max-width:1120px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
     .brand{display:flex; align-items:center; gap:12px; min-width:220px;}
     .mark{width:30px; height:30px; border-radius:10px;border:1px solid rgba(255,255,255,.16);
       background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
@@ -49,13 +49,13 @@
     .dot.neutral{background:rgba(255,255,255,.28)}
     .vinStatusWrap{display:inline-flex;align-items:center;gap:8px}
     .vinStatusDot{width:9px;height:9px;box-shadow:0 0 0 2px rgba(0,0,0,.18)}
-    .wrap{max-width:1120px;margin:0 auto;padding:26px 18px 40px;}
-    .hero{margin-top:18px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;}
-    .hero h1{margin:0;font-size:28px;line-height:1.15;font-weight:720;color:var(--text2);}
-    .hero p{margin:0;max-width:760px;font-size:14px;color:var(--muted);line-height:1.6;}
-    .vinbox{width:min(860px, 100%);margin-top:6px;border-radius:22px;border:1px solid rgba(255,255,255,.14);
+    .wrap{max-width:1120px;margin:0 auto;padding:10px 18px 16px;}
+    .hero{margin-top:0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;max-height:520px;}
+    .hero h1{margin:0 0 6px 0;font-size:30px;line-height:1.12;font-weight:720;color:var(--text2);}
+    .hero p{margin:0;max-width:760px;font-size:13px;color:var(--muted);line-height:1.45;}
+    .vinbox{width:min(860px, 100%);margin-top:0;border-radius:22px;border:1px solid rgba(255,255,255,.14);
       background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));box-shadow: var(--shadow);overflow:hidden;}
-    .vinrow{display:flex;align-items:center;gap:10px;padding:14px;border-bottom:1px solid rgba(255,255,255,.08);background: rgba(255,255,255,.06);}
+    .vinrow{display:flex;align-items:center;gap:10px;padding:12px;border-bottom:1px solid rgba(255,255,255,.08);background: rgba(255,255,255,.06);}
     .vinlabel{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(238,243,251,.72);padding:8px 10px;border-radius:999px;
       border:1px solid rgba(255,255,255,.12);background: rgba(255,255,255,.04);}
     .vinrow input{flex:1;background: transparent;border:none;outline:none;color:var(--text2);font-family: var(--mono);font-size:15px;letter-spacing:.04em;padding:10px 6px;}
@@ -69,14 +69,14 @@
     .dialmeta{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:124px;}
     .dialmeta .l{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(238,243,251,.66);}
     .dialmeta .v{font-size:12px;color:rgba(238,243,251,.92);}
-    .btnbar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:14px;}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;min-height:44px;border-radius:14px;border:1px solid rgba(255,255,255,.16);
+    .btnbar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:10px;}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;min-height:40px;border-radius:14px;border:1px solid rgba(255,255,255,.16);
       background: rgba(255,255,255,.06);color:var(--text2);font-size:13px;cursor:pointer;user-select:none;transition: transform .08s ease, background .12s ease, border-color .12s ease;}
     .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.22)}
     .btn.primary{background: rgba(106,166,255,.18); border-color: rgba(106,166,255,.36);} .btn.primary:hover{background:rgba(106,166,255,.22)}
     .ico{width:18px;height:18px;border-radius:7px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.18);background: rgba(255,255,255,.06);font-size:11px;color:rgba(238,243,251,.90);}
-    .below{width:min(1040px, 100%);margin:18px auto 0;display:grid;grid-template-columns: repeat(3, 1fr);gap:12px;}
-    @media (max-width: 980px){ .below{grid-template-columns:1fr} .hero h1{font-size:24px} .dialmeta{display:none} }
+    .below{width:min(1040px, 100%);margin:8px auto 0;display:grid;grid-template-columns:repeat(3, 1fr);gap:12px;}
+    @media (max-width: 980px){ .below{grid-template-columns:1fr;} .hero h1{margin:0 0 6px 0;font-size:30px;line-height:1.12;font-weight:720;color:var(--text2);} .dialmeta{display:none} }
     .tile{border-radius:18px;border:1px solid rgba(255,255,255,.12);background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       padding:14px;box-shadow: var(--shadow2);cursor:pointer;transition: transform .08s ease, border-color .12s ease, background .12s ease;min-height:98px;position:relative;overflow:hidden;}
     .tile:hover{transform:translateY(-1px); border-color:rgba(255,255,255,.18); background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.035));}
@@ -88,7 +88,7 @@
     .tile .t{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(238,243,251,.74);}
     .tile .v{margin-top:10px;font-size:22px;font-weight:760;color:var(--text2);letter-spacing:.02em;}
     .tile .m{margin-top:6px;font-size:12px;color:rgba(215,224,236,.78);line-height:1.35;}
-    .hintline{margin-top:10px;font-size:12px;color:rgba(215,224,236,.78);}
+    .hintline{margin-top:0px;font-size:12px;color:rgba(215,224,236,.78);}
     .hintline code{font-family:var(--mono);padding:2px 6px;border-radius:8px;border:1px solid rgba(255,255,255,.14);background: rgba(255,255,255,.06);color:rgba(238,243,251,.90);}
     .modal{position:fixed; inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:18px;z-index:50;}
     .modal.open{display:flex}
@@ -182,7 +182,7 @@
     .qchip.good{border-color:rgba(62,224,143,.34); background:rgba(62,224,143,.10)}
     .qchip.warn{border-color:rgba(255,207,90,.34); background:rgba(255,207,90,.10)}
     .qchip.bad{border-color:rgba(255,90,106,.34); background:rgba(255,90,106,.10)}
-    .help{margin-top:18px;text-align:center;font-size:12px;color:rgba(215,224,236,.66);}
+    .help{display:none;margin-top:0px;text-align:center;font-size:12px;color:rgba(215,224,236,.66);}
     .help kbd{font-family:var(--mono);font-size:11px;padding:3px 7px;border-radius:8px;border:1px solid rgba(255,255,255,.14);background: rgba(255,255,255,.04);color:rgba(238,243,251,.88);}
     .sheet.small{width:min(520px,100%);}
     .field{display:flex;flex-direction:column;gap:6px;margin-top:10px;}
@@ -285,13 +285,166 @@
     .govSummaryLine .pill.bad .dot{background:var(--bad);}
     .govSummaryLine a{color:rgba(255,255,255,.92); text-decoration:none; border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.04); padding:7px 10px; border-radius:12px; font-weight:800;}
     .govSummaryLine a:hover{background:rgba(255,255,255,.07);}
+
+
+.heroLogo{
+  width:64px;
+  height:64px;
+  object-fit:contain;
+  display:block;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* ================================
+   Outcome Logo — HERO (50x emphasis)
+   ================================ */
+.heroLogoWrap{margin:-18px auto -12px;display:grid;place-items:center;
+  }
+
+.heroLogo{
+  width: 360px;              /* BIG */
+  height: 360px;
+  object-fit:contain;
+  display:block;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.hero{gap:6px; max-height:none;}
+.heroLogoWrap{margin:-10px auto 2px !important;}
+.hero h1{margin-top:0 !important;}
+.vinbox{margin-top:-2px !important;}
+.below{margin:6px auto 0 !important;}
+.insightsWrap{margin-top:6px !important;}
+
+
+/* === Above-the-fold tune (move VIN + tiles up, preserve 3-col tiles) === */
+.hero{gap:10px;}
+.heroLogoWrap{margin:-26px auto -6px !important;}
+.hero h1{margin:0 0 6px 0;}
+.hero p{margin:0;}
+.vinbox{margin-top:-10px !important;}
+.below{margin-top:10px;}
+.insightsWrap{margin-top:10px !important;}
+
+
+/* ================================
+   Premium spacing tune (above-the-fold)
+   Goal: restore breathing room without reintroducing deadspace
+   ================================ */
+.wrap{ padding: 12px 18px 18px !important; }
+
+/* Hero rhythm */
+.hero{ gap: 14px !important; margin-top: 0 !important; }
+.heroLogoWrap{ margin: 0 auto 14px !important; }
+.hero h1{ margin: 0 0 10px 0 !important; }
+.hero p{ margin: 0 0 8px 0 !important; line-height: 1.5 !important; }
+
+/* VIN module */
+.vinbox{ margin-top: 6px !important; }
+.vinrow{ padding: 14px !important; }
+.btnbar{ padding: 12px !important; }
+
+/* Tiles + insights spacing */
+.below{ margin: 16px auto 0 !important; }
+.grid3{ gap: 14px !important; }
+.tiles{ gap: 14px !important; }
+.section{ margin-top: 14px !important; }
+
+/* ================================
+   Responsive + fold-safe hero (14" laptops + smaller)
+   Key: scale logo by viewport height, not fixed px
+   ================================ */
+:root{
+  --logoWrap: clamp(150px, 22vh, 260px);
+  --logoImg:  clamp(130px, 20vh, 230px);
+  --heroGap:  clamp(10px, 2vh, 16px);
+}
+
+/* Keep hero content-driven, not full-screen */
+.hero{
+  gap: var(--heroGap) !important;
+  margin-top: 0 !important;
+  max-height: none !important;
+}
+
+/* Responsive logo (no more 420px fixed box) */
+.heroLogoWrap{
+  width: var(--logoWrap) !important;
+  height: var(--logoWrap) !important;
+  margin: 0 auto 8px !important;
+}
+.heroLogo{
+  width: var(--logoImg) !important;
+  height: var(--logoImg) !important;
+}
+
+/* Fold-safe typography */
+.hero h1{
+  font-size: clamp(22px, 2.5vw, 30px) !important;
+  line-height: 1.12 !important;
+  margin: 0 0 8px 0 !important;
+}
+.hero p{
+  font-size: clamp(12px, 1.35vw, 14px) !important;
+  line-height: 1.45 !important;
+  margin: 0 0 6px 0 !important;
+}
+
+/* Fold-safe spacing across sections */
+.wrap{ padding: 10px 18px 14px !important; }
+.vinbox{ margin-top: 4px !important; }
+.below{ margin-top: 12px !important; }
+.grid3{ gap: 12px !important; }
+
+/* Short viewport (common on 14" MacBook with browser chrome): tighten further */
+@media (max-height: 820px){
+  :root{
+    --logoWrap: clamp(130px, 18vh, 210px);
+    --logoImg:  clamp(115px, 16vh, 190px);
+    --heroGap:  10px;
+  }
+  .vinrow{ padding: 12px !important; }
+  .btnbar{ padding: 10px !important; }
+  .section{ margin-top: 12px !important; }
+}
+
+/* Very short viewport: keep everything above fold */
+@media (max-height: 740px){
+  :root{
+    --logoWrap: 150px;
+    --logoImg:  135px;
+  }
+  .hero h1{ font-size: 22px !important; }
+  .hero p{ display:none !important; } /* drop subhead only when needed */
+  .below{ margin-top: 10px !important; }
+}
+
+/* ================================
+   Foreground logo (LOCKED) — zero layout shift
+   Keep existing heroLogoWrap for spacing, but hide its image.
+   ================================ */
+.hero{ position: relative !important; }
+
+/* Preserve spacing but prevent duplicate mark */
+.heroLogoWrap .heroLogo{ opacity: 0 !important; }
+
+/* Foreground mark sits above content without affecting flow */
+.heroLogoForeground{
+  position:absolute;
+  left:50%;
+  top:6px;                 /* close to header */
+  transform:translateX(-50%);
+  width:clamp(180px, 18vw, 260px);
+  height:auto;
+  z-index:4;
+  pointer-events:none;
+}
 </style>
 </head>
 <body>
   <div class="top">
     <div class="inner">
       <div class="brand">
-        <div class="mark" aria-label="Outcome AI logo placeholder"></div>
         <div class="name">
           <strong>Outcome AI</strong>
           <span>Decision Intelligence for Automotive Capital</span>
@@ -308,6 +461,13 @@
 
   <div class="wrap">
     <div class="hero">
+  <img class="heroLogoForeground" src="assets/outcome-mark-white.png" alt="Outcome" />
+
+
+  <div class="heroLogoWrap" aria-label="Outcome mark">
+    <img class="heroLogo" src="assets/outcome-mark-white.png" alt="Outcome" />
+  </div>
+
       <h1>Most tools reset every morning. Outcome doesn't.</h1>
       <p>Immediate clarity first. Details only when you click.</p>
 
@@ -345,10 +505,6 @@
           </div>
         </div>
       </div>
-
-      <div class="hintline">
-      </div>
-      <div class="help">Tip: press <kbd>?</kbd> to view queued upgrades (internal only).</div>
     </div>
 
     <div class="below" aria-label="Secondary actions">
