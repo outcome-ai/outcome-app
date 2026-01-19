@@ -477,11 +477,11 @@
 
   <div class="wrap">
     <div class="hero">
-  <img class="heroLogoForeground" src="/assets/outcome-mark-white.png" alt="Outcome" />
+  <img class="heroLogoForeground" src="assets/outcome-mark-white.png" alt="Outcome" />
 
 
   <div class="heroLogoWrap" aria-label="Outcome mark">
-    <img class="heroLogo" src="/assets/outcome-mark-white.png" alt="Outcome" />
+    <img class="heroLogo" src="assets/outcome-mark-white.png" alt="Outcome" />
   </div>
 
       <h1>Most tools reset every morning. Outcome doesn't.</h1>
