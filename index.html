@@ -457,6 +457,29 @@
 </style>
 </head>
 <body>
+  <script>
+  // Dealer slug support (for /d/<dealer-slug>/ deployments)
+  (function(){
+    try{
+      var parts = location.pathname.split('/').filter(Boolean);
+      if(parts[0]==='d' && parts[1]){
+        var slug = decodeURIComponent(parts[1]);
+        window.DEALER_SLUG = slug;
+        // Optional: map known slugs to friendly names
+        var map = {
+          'outcome-demo':'Rob Sight Ford',
+          'demo':'Rob Sight Ford'
+        };
+        var name = map[slug] || slug
+          .replace(/[-_]+/g,' ')
+          .replace(/\b\w/g, function(m){ return m.toUpperCase(); });
+        var el = document.getElementById('dealerName');
+        if(el) el.textContent = name;
+      }
+    }catch(e){}
+  })();
+  </script>
+
   <div class="top">
     <div class="inner">
       <div class="brand">
@@ -469,7 +492,7 @@
         <div class="pill"><span class="dot good"></span> Ready</div>
         <div class="pill clickable" id="grossPill" title="Click to adjust gross goal"><span class="dot warn"></span> Gross Goal: <span id="grossGoalText">$3,000</span></div>
         <div class="pill clickable hidden" id="govPill" title="Buy Decision — Should We Really Buy This Car? (Store Patterns • Money Turn • Confidence)"><span class="dot warn"></span> Buy Decision</div>
-        <div class="pill"><span class="dot good"></span> Dealer: Rob Sight Ford</div>
+        <div class="pill"><span class="dot good"></span> Dealer: <span id="dealerName">Rob Sight Ford</span></div>
         <div class="pill clickable" id="readinessPill" title="Click to view Data Readiness"><span class="dot warn" id="readinessDot"></span> Data: <span class="pctMini" id="readinessPillPct">63%</span> <span id="readinessPillLabel" style="opacity:.78;">Moderate</span></div>
       </div>
     </div>
@@ -477,11 +500,11 @@
 
   <div class="wrap">
     <div class="hero">
-  <img class="heroLogoForeground" src="/assets/outcome-mark-white.png" alt="Outcome" />
+  <img class="heroLogoForeground" src="assets/outcome-mark-white.png" alt="Outcome" />
 
 
   <div class="heroLogoWrap" aria-label="Outcome mark">
-    <img class="heroLogo" src="/assets/outcome-mark-white.png" alt="Outcome" />
+    <img class="heroLogo" src="assets/outcome-mark-white.png" alt="Outcome" />
   </div>
 
       <h1>Most tools reset every morning. Outcome doesn't.</h1>
